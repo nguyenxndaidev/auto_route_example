@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_route_example/auth_service.dart';
-import 'package:auto_route_example/router.gr.dart';
 import 'package:flutter/widgets.dart';
 
 import 'widgets.dart';
@@ -14,15 +12,30 @@ import 'widgets.dart';
       page: HomeRouterPage,
       children: [
         AutoRoute(path: '', page: HomePage),
-        AutoRoute(path: 'a', page: PublicAPage),
-        RedirectRoute(path: 'b', redirectTo: 'c'),
-        AutoRoute(path: 'c', page: PublicCPage),
-        // TODO: https://github.com/Milad-Akarie/auto_route_library/issues/393
-        RedirectRoute(path: 'd', redirectTo: '/auth'),
+        AutoRoute(path: 'a', page: HomeAPage),
+        AutoRoute(path: 'b', page: HomeBPage),
       ],
     ),
-    AutoRoute(path: '/auth', guards: [NoAuthGuard], page: AuthPage),
-    AutoRoute(path: '/protected', guards: [AuthGuard], page: ProtectedPage),
+    AutoRoute(
+      path: '/public',
+      name: 'PublicRouter',
+      page: PublicRouterPage,
+      children: [
+        AutoRoute(path: '', page: PublicPage),
+        AutoRoute(path: 'a', page: PublicAPage),
+        AutoRoute(path: 'b', page: PublicBPage),
+      ],
+    ),
+    AutoRoute(
+      path: '/protected',
+      name: 'ProtectedRouter',
+      page: ProtectedRouterPage,
+      children: [
+        AutoRoute(path: '', page: ProtectedPage),
+        AutoRoute(path: 'a', page: ProtectedAPage),
+        AutoRoute(path: 'b', page: ProtectedBPage),
+      ],
+    ),
     AutoRoute(path: '/*', page: NotFoundPage),
   ],
 )
@@ -37,50 +50,20 @@ class HomeRouterPage extends AutoRouter with AutoRouteWrapper {
   }
 }
 
-class NoAuthGuard extends AutoRouteGuard {
-  NoAuthGuard({@required this.authService});
-
-  final AuthService authService;
+class PublicRouterPage extends AutoRouter with AutoRouteWrapper {
+  const PublicRouterPage({Key key}) : super(key: key);
 
   @override
-  Future<bool> canNavigate(
-    List<PageRouteInfo> pendingRoutes,
-    StackRouter router,
-  ) async {
-    bool isAuthenticated = authService.authenticated;
-
-    if (!isAuthenticated) {
-      return true;
-    }
-
-    router.root.push(ProtectedRoute());
-    return false;
+  Widget wrappedRoute(BuildContext context) {
+    return this;
   }
 }
 
-class AuthGuard extends AutoRouteGuard {
-  AuthGuard({@required this.authService});
-
-  final AuthService authService;
+class ProtectedRouterPage extends AutoRouter with AutoRouteWrapper {
+  const ProtectedRouterPage({Key key}) : super(key: key);
 
   @override
-  Future<bool> canNavigate(
-    List<PageRouteInfo> pendingRoutes,
-    StackRouter router,
-  ) async {
-    bool isAuthenticated = authService.authenticated;
-    print('isAuthenticated $isAuthenticated');
-
-    if (isAuthenticated) {
-      return true;
-    }
-
-    router.root.push(AuthRoute(onSuccessAuthenticated: (success) {
-      if (success) {
-        print('pendingRoutes $pendingRoutes');
-        router.replaceAll(pendingRoutes);
-      }
-    }));
-    return false;
+  Widget wrappedRoute(BuildContext context) {
+    return this;
   }
 }

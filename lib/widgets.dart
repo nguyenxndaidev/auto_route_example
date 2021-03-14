@@ -1,9 +1,64 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_route_example/auth_service.dart';
 import 'package:auto_route_example/router.gr.dart';
 import 'package:flutter/material.dart';
 
-import 'getit.dart';
+class NavigationButtons extends StatelessWidget {
+  const NavigationButtons({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(HomeRoute()),
+          child: Text('context.router.push(HomeRoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(HomeARoute()),
+          child: Text('context.router.push(HomeARoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(HomeBRoute()),
+          child: Text('context.router.push(HomeBRoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(PublicRoute()),
+          child: Text('context.router.push(PublicRoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(PublicARoute()),
+          child: Text('context.router.push(PublicARoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(PublicBRoute()),
+          child: Text('context.router.push(PublicBRoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(ProtectedRoute()),
+          child: Text('context.router.push(ProtectedRoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(ProtectedARoute()),
+          child: Text('context.router.push(ProtectedARoute())'),
+        ),
+        Spacer(),
+        OutlinedButton(
+          onPressed: () => context.router.push(ProtectedBRoute()),
+          child: Text('context.router.push(ProtectedBRoute())'),
+        ),
+        Spacer(),
+      ],
+    );
+  }
+}
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,28 +67,43 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Center(
-        child: Row(
-          children: [
-            Spacer(),
-            OutlinedButton(
-              onPressed: () {
-                context.router.push(PublicARoute());
-              },
-              child: Text('Public A'),
-            ),
-            Spacer(),
-            OutlinedButton(
-              onPressed: () {
-                context.router.root.push(ProtectedRoute());
-                // context.router.root.pushPath('/protected');
-              },
-              child: Text('Protected'),
-            ),
-            Spacer(),
-          ],
-        ),
+      body: Center(child: NavigationButtons()),
+    );
+  }
+}
+
+class HomeAPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home A'),
       ),
+      body: Center(child: NavigationButtons()),
+    );
+  }
+}
+
+class HomeBPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home B'),
+      ),
+      body: Center(child: NavigationButtons()),
+    );
+  }
+}
+
+class PublicPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Public'),
+      ),
+      body: Center(child: NavigationButtons()),
     );
   }
 }
@@ -45,14 +115,7 @@ class PublicAPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Public A'),
       ),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () {
-            context.router.push(HomeRoute());
-          },
-          child: Text('Home'),
-        ),
-      ),
+      body: Center(child: NavigationButtons()),
     );
   }
 }
@@ -64,47 +127,7 @@ class PublicBPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Public B'),
       ),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () {
-            context.router.push(HomeRoute());
-          },
-          child: Text('Home'),
-        ),
-      ),
-    );
-  }
-}
-
-class PublicCPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Public C'),
-      ),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () {
-            context.router.push(HomeRoute());
-          },
-          child: Text('Home'),
-        ),
-      ),
-    );
-  }
-}
-
-class PublicHPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Public H'),
-      ),
-      body: const Center(
-        child: Text('Public H'),
-      ),
+      body: Center(child: NavigationButtons()),
     );
   }
 }
@@ -112,58 +135,41 @@ class PublicHPage extends StatelessWidget {
 class ProtectedPage extends StatelessWidget {
   ProtectedPage();
 
-  final _authService = get<AuthService>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Protected'),
       ),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () async {
-            await _authService.logout();
-            if (!_authService.authenticated) {
-              // context.router.root.push(HomeRouter());
-              // context.router.root.push(PublicRoute());
-              // context.router.root.navigate(PublicARoute());
-              // context.router.root.pushPath('/a');
-              context.router.pushPath('/b');
-            }
-          },
-          child: Text('Logout'),
-        ),
-      ),
+      body: Center(child: NavigationButtons()),
     );
   }
 }
 
-class AuthPage extends StatelessWidget {
-  AuthPage({@required this.onSuccessAuthenticated});
-
-  final void Function(bool success) onSuccessAuthenticated;
-
-  final _authService = get<AuthService>();
+class ProtectedAPage extends StatelessWidget {
+  ProtectedAPage();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Auth'),
+        title: const Text('Protected A'),
       ),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () async {
-            await _authService.login();
-            if (_authService.authenticated) {
-              onSuccessAuthenticated?.call(true);
-              context.router.pop();
-            }
-          },
-          child: Text('Login'),
-        ),
+      body: Center(child: NavigationButtons()),
+    );
+  }
+}
+
+class ProtectedBPage extends StatelessWidget {
+  ProtectedBPage();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Protected B'),
       ),
+      body: Center(child: NavigationButtons()),
     );
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'getit.dart';
 import 'router.gr.dart';
 
 void main() {
-  setupGetIt();
   runApp(App());
 }
 
@@ -14,7 +12,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final _appRouter = get<AppRouter>();
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
