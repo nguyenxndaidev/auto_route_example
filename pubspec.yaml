@@ -1,0 +1,23 @@
+name: auto_route_example
+publish_to: 'none'
+version: 1.0.0-beta
+
+environment:
+  sdk: ">=2.11.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  get_it: ^6.0.0
+  auto_route: ^1.0.0-beta
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  auto_route_generator: ^1.0.0-beta
+  build_runner: ^1.0.0
+
+flutter:
+  uses-material-design: true
