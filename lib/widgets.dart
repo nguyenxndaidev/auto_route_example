@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route_example/router.gr.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NavigationButtons extends StatelessWidget {
@@ -8,53 +9,44 @@ class NavigationButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(HomeRoute()),
           child: Text('context.router.push(HomeRoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(HomeARoute()),
           child: Text('context.router.push(HomeARoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(HomeBRoute()),
           child: Text('context.router.push(HomeBRoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(PublicRoute()),
           child: Text('context.router.push(PublicRoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(PublicARoute()),
           child: Text('context.router.push(PublicARoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(PublicBRoute()),
           child: Text('context.router.push(PublicBRoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(ProtectedRoute()),
           child: Text('context.router.push(ProtectedRoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(ProtectedARoute()),
           child: Text('context.router.push(ProtectedARoute())'),
         ),
-        Spacer(),
         OutlinedButton(
           onPressed: () => context.router.push(ProtectedBRoute()),
           child: Text('context.router.push(ProtectedBRoute())'),
         ),
-        Spacer(),
       ],
     );
   }
