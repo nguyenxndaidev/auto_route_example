@@ -12,40 +12,58 @@ class NavigationButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         OutlinedButton(
-          onPressed: () => context.router.push(HomeRoute()),
-          child: Text('context.router.push(HomeRoute())'),
+          onPressed: () =>
+              context.router.root.push(HomeRouter(children: [HomeRoute()])),
+          child: Text(
+              'context.router.root.push(HomeRouter(children: [HomeRoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(HomeARoute()),
-          child: Text('context.router.push(HomeARoute())'),
+          onPressed: () =>
+              context.router.root.push(HomeRouter(children: [HomeARoute()])),
+          child: Text(
+              'context.router.root.push(HomeRouter(children: [HomeARoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(HomeBRoute()),
-          child: Text('context.router.push(HomeBRoute())'),
+          onPressed: () =>
+              context.router.root.push(HomeRouter(children: [HomeBRoute()])),
+          child: Text(
+              'context.router.root.push(HomeRouter(children: [HomeBRoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(PublicRoute()),
-          child: Text('context.router.push(PublicRoute())'),
+          onPressed: () =>
+              context.router.root.push(PublicRouter(children: [PublicRoute()])),
+          child: Text(
+              'context.router.root.push(PublicRouter(children: [PublicRoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(PublicARoute()),
-          child: Text('context.router.push(PublicARoute())'),
+          onPressed: () => context.router.root
+              .push(PublicRouter(children: [PublicARoute()])),
+          child: Text(
+              'context.router.root.push(PublicRouter(children: [PublicARoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(PublicBRoute()),
-          child: Text('context.router.push(PublicBRoute())'),
+          onPressed: () => context.router.root
+              .push(PublicRouter(children: [PublicBRoute()])),
+          child: Text(
+              'context.router.root.push(PublicRouter(children: [PublicBRoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(ProtectedRoute()),
-          child: Text('context.router.push(ProtectedRoute())'),
+          onPressed: () => context.router.root
+              .push(ProtectedRouter(children: [ProtectedRoute()])),
+          child: Text(
+              'context.router.root.push(ProtectedRouter(children: [ProtectedRoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(ProtectedARoute()),
-          child: Text('context.router.push(ProtectedARoute())'),
+          onPressed: () => context.router.root
+              .push(ProtectedRouter(children: [ProtectedARoute()])),
+          child: Text(
+              'context.router.root.push(ProtectedRouter(children: [ProtectedARoute()]))'),
         ),
         OutlinedButton(
-          onPressed: () => context.router.push(ProtectedBRoute()),
-          child: Text('context.router.push(ProtectedBRoute())'),
+          onPressed: () => context.router.root
+              .push(ProtectedRouter(children: [ProtectedBRoute()])),
+          child: Text(
+              'context.router.root.push(ProtectedRouter(children: [ProtectedBRoute()]))'),
         ),
       ],
     );
