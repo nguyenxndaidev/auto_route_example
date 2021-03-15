@@ -2,7 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
 
 import 'auth_service.dart';
-import 'router.gr.dart';
+import 'app_router.gr.dart';
+import 'routers.dart';
 import 'widgets.dart';
 
 @MaterialAutoRouter(
@@ -44,33 +45,6 @@ import 'widgets.dart';
   ],
 )
 class $AppRouter {}
-
-class HomeRouterPage extends AutoRouter with AutoRouteWrapper {
-  const HomeRouterPage({Key key}) : super(key: key);
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return this;
-  }
-}
-
-class PublicRouterPage extends AutoRouter with AutoRouteWrapper {
-  const PublicRouterPage({Key key}) : super(key: key);
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return this;
-  }
-}
-
-class ProtectedRouterPage extends AutoRouter with AutoRouteWrapper {
-  const ProtectedRouterPage({Key key}) : super(key: key);
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return this;
-  }
-}
 
 class NoAuthGuard extends AutoRouteGuard {
   NoAuthGuard({@required this.authService});

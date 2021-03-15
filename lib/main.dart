@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'getit.dart';
-import 'router.gr.dart';
+import 'app_router.gr.dart';
 
 void main() {
   setupGetIt();

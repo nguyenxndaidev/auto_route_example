@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_route_example/router.gr.dart';
+import 'package:auto_route_example/app_router.gr.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,58 +15,60 @@ class NavigationButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         OutlinedButton(
-          onPressed: () =>
-              context.router.root.push(HomeRouter(children: [HomeRoute()])),
-          child: Text(
-              'context.router.root.push(HomeRouter(children: [HomeRoute()]))'),
-        ),
-        OutlinedButton(
           onPressed: () => context.router.root
-              .push(HomeRouter(children: [HomeRoute(), HomeARoute()])),
+              .push(HomeRouter()),
           child: Text(
-              'context.router.root.push(HomeRouter(children: [HomeRoute(), HomeARoute()]))'),
-        ),
-        OutlinedButton(
-          onPressed: () => context.router.root
-              .push(HomeRouter(children: [HomeRoute(), HomeBRoute()])),
-          child: Text(
-              'context.router.root.push(HomeRouter(children: [HomeRoute(), HomeBRoute()]))'),
-        ),
-        OutlinedButton(
-          onPressed: () =>
-              context.router.root.push(PublicRouter(children: [PublicRoute()])),
-          child: Text(
-              'context.router.root.push(PublicRouter(children: [PublicRoute()]))'),
-        ),
-        OutlinedButton(
-          onPressed: () => context.router.root
-              .push(PublicRouter(children: [PublicRoute(), PublicARoute()])),
-          child: Text(
-              'context.router.root.push(PublicRouter(children: [PublicRoute(), PublicARoute()]))'),
-        ),
-        OutlinedButton(
-          onPressed: () => context.router.root
-              .push(PublicRouter(children: [PublicRoute(), PublicBRoute()])),
-          child: Text(
-              'context.router.root.push(PublicRouter(children: [PublicRoute(), PublicBRoute()]))'),
-        ),
-        OutlinedButton(
-          onPressed: () => context.router.root
-              .push(ProtectedRouter(children: [ProtectedRoute()])),
-          child: Text(
-              'context.router.root.push(ProtectedRouter(children: [ProtectedRoute()]))'),
+              'context.router.root.push(HomeRouter())'),
         ),
         OutlinedButton(
           onPressed: () => context.router.root.push(
-              ProtectedRouter(children: [ProtectedRoute(), ProtectedARoute()])),
+              HomeRouter(pageId: 'a')),
           child: Text(
-              'context.router.root.push(ProtectedRouter(children: [ProtectedRoute(), ProtectedARoute()]))'),
+              "context.router.root.push(HomeRouter(pageId: 'a'))"),
         ),
         OutlinedButton(
           onPressed: () => context.router.root.push(
-              ProtectedRouter(children: [ProtectedRoute(), ProtectedBRoute()])),
+              HomeRouter(pageId: 'b')),
           child: Text(
-              'context.router.root.push(ProtectedRouter(children: [ProtectedRoute(), ProtectedBRoute()]))'),
+              "context.router.root.push(HomeRouter(pageId: 'b'))"),
+        ),
+
+        OutlinedButton(
+          onPressed: () => context.router.root
+              .push(PublicRouter()),
+          child: Text(
+              'context.router.root.push(PublicRouter())'),
+        ),
+        OutlinedButton(
+          onPressed: () => context.router.root.push(
+              PublicRouter(pageId: 'a')),
+          child: Text(
+              "context.router.root.push(PublicRouter(pageId: 'a'))"),
+        ),
+        OutlinedButton(
+          onPressed: () => context.router.root.push(
+              PublicRouter(pageId: 'b')),
+          child: Text(
+              "context.router.root.push(PublicRouter(pageId: 'b'))"),
+        ),
+
+        OutlinedButton(
+          onPressed: () => context.router.root
+              .push(ProtectedRouter()),
+          child: Text(
+              'context.router.root.push(ProtectedRouter())'),
+        ),
+        OutlinedButton(
+          onPressed: () => context.router.root.push(
+              ProtectedRouter(pageId: 'a')),
+          child: Text(
+              "context.router.root.push(ProtectedRouter(pageId: 'a'))"),
+        ),
+        OutlinedButton(
+          onPressed: () => context.router.root.push(
+              ProtectedRouter(pageId: 'b')),
+          child: Text(
+              "context.router.root.push(ProtectedRouter(pageId: 'b'))"),
         ),
       ],
     );

@@ -1,8 +1,8 @@
 import 'package:get_it/get_it.dart';
 
 import 'auth_service.dart';
-import 'router.dart';
-import 'router.gr.dart';
+import 'app_router.dart';
+import 'app_router.gr.dart';
 
 final get = GetIt.instance;
 
