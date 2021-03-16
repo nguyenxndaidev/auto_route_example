@@ -47,7 +47,7 @@ import 'widgets.dart';
 class $AppRouter {}
 
 class NoAuthGuard extends AutoRouteGuard {
-  NoAuthGuard({@required this.authService});
+  NoAuthGuard({required this.authService});
 
   final AuthService authService;
 
@@ -68,7 +68,7 @@ class NoAuthGuard extends AutoRouteGuard {
 }
 
 class AuthGuard extends AutoRouteGuard {
-  AuthGuard({@required this.authService});
+  AuthGuard({required this.authService});
 
   final AuthService authService;
 

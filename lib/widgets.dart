@@ -7,7 +7,7 @@ import 'auth_service.dart';
 import 'getit.dart';
 
 class NavigationButtons extends StatelessWidget {
-  const NavigationButtons({Key key}) : super(key: key);
+  const NavigationButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,7 @@ class HomePage extends StatelessWidget {
 }
 
 class AuthButton extends StatefulWidget {
-  const AuthButton({Key key}) : super(key: key);
+  const AuthButton({Key? key}) : super(key: key);
 
   @override
   _AuthButtonState createState() => _AuthButtonState();
@@ -228,9 +228,9 @@ class ProtectedBPage extends StatelessWidget {
 }
 
 class AuthPage extends StatelessWidget {
-  AuthPage({@required this.onSuccessAuthenticated});
+  AuthPage({this.onSuccessAuthenticated});
 
-  final void Function(bool success) onSuccessAuthenticated;
+  final void Function(bool success)? onSuccessAuthenticated;
 
   final _authService = get<AuthService>();
 
