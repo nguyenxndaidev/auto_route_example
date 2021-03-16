@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/widgets.dart';
 
-import 'auth_service.dart';
 import 'app_router.gr.dart';
+import 'auth_service.dart';
+import 'getit.dart';
 import 'routers.dart';
 import 'widgets.dart';
 
@@ -47,16 +47,14 @@ import 'widgets.dart';
 class $AppRouter {}
 
 class NoAuthGuard extends AutoRouteGuard {
-  NoAuthGuard({required this.authService});
-
-  final AuthService authService;
+  final _authService = get<AuthService>();
 
   @override
   Future<bool> canNavigate(
     List<PageRouteInfo> pendingRoutes,
     StackRouter router,
   ) async {
-    bool isAuthenticated = authService.authenticated;
+    bool isAuthenticated = _authService.authenticated;
 
     if (!isAuthenticated) {
       return true;
@@ -68,16 +66,14 @@ class NoAuthGuard extends AutoRouteGuard {
 }
 
 class AuthGuard extends AutoRouteGuard {
-  AuthGuard({required this.authService});
-
-  final AuthService authService;
+  final _authService = get<AuthService>();
 
   @override
   Future<bool> canNavigate(
     List<PageRouteInfo> pendingRoutes,
     StackRouter router,
   ) async {
-    bool isAuthenticated = authService.authenticated;
+    bool isAuthenticated = _authService.authenticated;
     print('isAuthenticated $isAuthenticated');
 
     if (isAuthenticated) {
